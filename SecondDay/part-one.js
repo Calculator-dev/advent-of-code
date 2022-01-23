@@ -19,5 +19,7 @@ input.forEach((item) => {
         // console.log(measurments.depth);
     }
     multiply = measurments.horizontal * measurments.depth
-    console.log(multiply);
+    
 })  
+
+console.log(multiply);
