@@ -1,15 +1,15 @@
 const { input } = require('./input')
 
-const count = {}
+const counter = {}
 
 for (let line of input) {
     for (let i = 0; i < line.length - 1 ; i++) {
-        if (!count[i]) {
-            count[i] = [0, 0]
+        if (!counter[i]) {
+            counter[i] = [0, 0]
         }
     
         let val = line[i]
-        count[i][val]++
+        counter[i][val]++
     }
 }
 
@@ -17,8 +17,8 @@ for (let line of input) {
 let gammaRate = []
 let epsilonRate = []
 
-for (let counts of Object.values(count)) {
-    if (counts[0] > counts[1]) {
+for (let counters of Object.values(counter)) {
+    if (counters[0] > counters[1]) {
         gammaRate.push(0)
         epsilonRate.push(1)
     } else {
