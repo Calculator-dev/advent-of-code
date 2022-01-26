@@ -1,22 +1,18 @@
 const { input } = require('./input')
 
-
 let OxygenGenerator = [...input]
 let ScrubberRating = [...input]
 
 function getOxyScrubb(lines) {
     let counter = {}
     for (let line of lines) {
-        
         for (let i = 0; i < line.length - 1 ; i++) {
             if (!counter[i]) {
                 counter[i] = [0, 0]
             }
-            
             let val = line[i]
             counter[i][val]++
         }
-        
     }
     
     let maxOxy = []
@@ -35,21 +31,15 @@ function getOxyScrubb(lines) {
             minScrubb.push("0")
         }
     }
-
-    return {
-		min: minScrubb,
-		max: maxOxy,
-	}
+    return {min: minScrubb,	max: maxOxy}
 }
-
 
 let bit = 0
 while (OxygenGenerator.length > 1) {
     let { max } = getOxyScrubb(OxygenGenerator)
 	OxygenGenerator = OxygenGenerator.filter((num) => {
 		return max[bit] === null ? num[bit] === '1' : num[bit] === max[bit]
-	});
-
+	})
 	bit++
 }
 
@@ -60,7 +50,7 @@ while (ScrubberRating.length > 1) {
 	let { min } = getOxyScrubb(ScrubberRating)
 	ScrubberRating = ScrubberRating.filter((num) => {
 		return min[bit2] === null ? num[bit2] === '0' : num[bit2] === min[bit2]
-	});
+	})
 	bit2++
 }
 
